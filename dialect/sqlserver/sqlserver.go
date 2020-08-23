@@ -26,6 +26,7 @@ func DialectOptions() *goqu.SQLDialectOptions {
 
 	opts.PlaceHolderFragment = []byte("@p")
 	opts.LimitFragment = []byte(" TOP ")
+	opts.WrapLimitValueInParens = true
 	opts.IncludePlaceholderNum = true
 	opts.DefaultValuesFragment = []byte("")
 	opts.True = []byte("1")

@@ -38,6 +38,8 @@ type (
 		SupportsLateral bool
 		// Set to false if the dialect does not require expressions to be wrapped in parens (DEFAULT=true)
 		WrapCompoundsInParens bool
+		// Set to true if the dialect requires regular or parameterized limit values to be wrapped in parens (DEFAULT=false)
+		WrapLimitValueInParens bool
 
 		// Set to true if window function are supported in SELECT statement. (DEFAULT=true)
 		SupportsWindowFunction bool
@@ -401,6 +403,7 @@ func DefaultDialectOptions() *SQLDialectOptions {
 		SupportsWithCTERecursive:    true,
 		SupportsDistinctOn:          true,
 		WrapCompoundsInParens:       true,
+		WrapLimitValueInParens:      false,
 		SupportsWindowFunction:      true,
 		SupportsLateral:             true,
 

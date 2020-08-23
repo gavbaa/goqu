@@ -104,7 +104,13 @@ func (csg *commonSQLGenerator) OrderWithOffsetFetchSQL(
 func (csg *commonSQLGenerator) LimitSQL(b sb.SQLBuilder, limit interface{}) {
 	if limit != nil {
 		b.Write(csg.dialectOptions.LimitFragment)
+		if csg.dialectOptions.WrapLimitValueInParens {
+			b.Write([]byte("("))
+		}
 		csg.esg.Generate(b, limit)
+		if csg.dialectOptions.WrapLimitValueInParens {
+			b.Write([]byte(")"))
+		}
 	}
 }
 
